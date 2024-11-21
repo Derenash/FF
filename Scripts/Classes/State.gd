@@ -1,15 +1,14 @@
 extends Node
-
 class_name State
 
 func enter(_data = null):
-  pass
+	pass
 
 func exit():
-  pass
+	pass
 
 func handle_input(_event: InputEvent):
-  pass
+	pass
 
 func _process(_delta: float):
-  pass
+	pass
