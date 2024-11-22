@@ -61,7 +61,7 @@ func stop_rotating() -> void:
 func rotate_pivot(delta: float) -> void:
 	rotation_time_elapsed += delta
 	var t = rotation_time_elapsed / ROTATION_FRAME_DURATION
-	t = clamp(t, 0, 1)
+	#t = clamp(t, 0, 1)
 
 	# Apply the easing function
 	var eased_t = ease_in_out_quad(t)

@@ -1,14 +1,15 @@
+# State.gd
 extends Node
 class_name State
 
-func enter(_data = null):
-	pass
+func enter_state():
+	pass  # Called when the state becomes active
 
-func exit():
-	pass
+func exit_state():
+	pass  # Called when the state is popped
 
-func handle_input(_event: InputEvent):
-	pass
+func pause_state():
+	pass  # Called when a new state is pushed on top
 
-func _process(_delta: float):
-	pass
+func resume_state():
+	pass  # Called when returning to this state
