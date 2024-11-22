@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://unsh8p51cjoy"]
+[gd_scene load_steps=10 format=3 uid="uid://unsh8p51cjoy"]
 
 [ext_resource type="Script" path="res://Scripts/grid_maps.gd" id="1_30goo"]
 [ext_resource type="MeshLibrary" uid="uid://bwwtato44wd70" path="res://Libraries/mesh_lib.tres" id="1_rpfri"]
@@ -6,6 +6,7 @@
 [ext_resource type="MeshLibrary" uid="uid://l5thgfnmo8jw" path="res://Libraries/Block 0.tres" id="2_trx41"]
 [ext_resource type="Script" path="res://Scripts/main_camera.gd" id="5_s3vpk"]
 [ext_resource type="Script" path="res://Scripts/pivot.gd" id="5_t00kc"]
+[ext_resource type="Script" path="res://Scripts/units.gd" id="6_jnoys"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ishr7"]
 size = Vector3(100, 2, 100)
@@ -50,9 +51,6 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(0.0251936, 0.992311, -0.121175, 0.673453, 0.0727335, 0.735643, 0.738802, -0.100135, -0.666442, 0, 56.3794, 0)
 light_color = Color(0.619461, 0.077591, 0.606668, 1)
 
-[node name="Character" parent="." instance=ExtResource("2_erhsq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 32, -15)
-
 [node name="Pivot" type="Marker3D" parent="."]
 transform = Transform3D(0.441083, 0.777228, 0.448733, -1.77636e-15, 0.5, -0.866025, -0.897467, 0.381989, 0.220541, 10, 0, 10)
 script = ExtResource("5_t00kc")
@@ -64,3 +62,9 @@ fov = 13.4
 size = 25.0
 script = ExtResource("5_s3vpk")
 metadata/_edit_lock_ = true
+
+[node name="Units" type="Node3D" parent="."]
+script = ExtResource("6_jnoys")
+
+[node name="Character" parent="Units" instance=ExtResource("2_erhsq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 32, -15)

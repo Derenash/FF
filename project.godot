@@ -21,7 +21,6 @@ config/icon="res://Assets/Icons/icon.svg"
 Utils="*res://Individual Scripts/Utils.gd"
 Global="*res://Individual Scripts/Global.gd"
 SignalBus="*res://Individual Scripts/SignalBus.gd"
-StateMachine="*res://Individual Scripts/StateMachine.gd"
 
 [display]
 

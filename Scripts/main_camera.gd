@@ -30,5 +30,5 @@ func _unhandled_input(event: InputEvent) -> void:
 		if result and result.collider is Character:
 			var character = result.collider as Character
 			var cell = character.current_pos
-			SignalBus.cell_clicked_by_mouse.emit(cell)
+			SignalBus.unit_clicked_by_mouse.emit(cell)
 			print("Clicked Character coordinates: ", cell)
