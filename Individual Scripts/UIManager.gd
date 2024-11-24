@@ -1,27 +1,45 @@
 # UIManager.gd
 extends Node
 
-# Dictionary to store UI references
-# Dictionary[String, Control]
-var ui_layers: Dictionary = {}
-var current_ui: Control = null
+# A dictionary to hold references to UI nodes
+var ui_dict: Dictionary = {}
 
-func show_ui(ui_name: String, data: Dictionary = {}) -> void:
-	if current_ui:
-		hide_ui()
-	if ui_layers.has(ui_name):
-		current_ui = ui_layers[ui_name]
-		current_ui.visible = true
-		current_ui.call("activate", data)
+# Generalized method to invoke a method on a UI node
+func run_ui_method(ui_name: String, method_name: String) -> void:
+	var ui_node = ui_dict.get(ui_name)
+	if ui_node:
+		if ui_node.has_method(method_name):
+			ui_node.call(method_name)
+		else:
+			print("UI node does not have method: " + method_name)
+		
 	else:
 		print("UI not found: " + ui_name)
 
-func hide_ui() -> void:
-	if current_ui:
-		current_ui.call("deactivate")
-		current_ui.visible = false
-		current_ui = null
+# Register a UI node with a unique name
+func register_ui(ui_name: String, ui_node: BaseUI, start_hidden: bool = true) -> void:
+	ui_dict[ui_name] = ui_node
+	ui_node.visible = !start_hidden
 
-func register_ui(ui_name: String, ui_node: Control) -> void:
-	ui_layers[ui_name] = ui_node
-	ui_node.visible = false
+# Show a specific UI by calling its 'activate' method
+func show_ui(ui_name: String) -> void:
+	run_ui_method(ui_name, "activate")
+
+# Hide a specific UI
+func hide_ui(ui_name: String) -> void:
+	run_ui_method(ui_name, "deactivate")
+
+# Hide all UIs
+func hide_all() -> void:
+	for ui_name in ui_dict.keys():
+		hide_ui(ui_name)
+
+# Show multiple UIs
+func show_multiple(ui_names: Array) -> void:
+	for ui_name in ui_names:
+		show_ui(ui_name)
+
+# Hide multiple UIs
+func hide_multiple(ui_names: Array) -> void:
+	for ui_name in ui_names:
+		hide_ui(ui_name)

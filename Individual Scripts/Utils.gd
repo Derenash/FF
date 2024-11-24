@@ -39,3 +39,8 @@ func load_states(base_path: String, state_names: Array) -> Dictionary:
 	for state_name in state_names:
 		states[state_name] = load(base_path + state_name + ".gd")
 	return states
+
+func append_to_dict_array(dict: Dictionary, key, value) -> void:
+	if not dict.has(key):
+		dict[key] = []
+	dict[key].append(value)

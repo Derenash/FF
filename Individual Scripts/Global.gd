@@ -3,6 +3,9 @@ extends Node
 const CELL_WIDTH: float = 2
 const CELL_DEPTH: float = 2
 const CELL_HEIGHT: float = 2
+const CELL_SIZE := Vector3(CELL_WIDTH, CELL_HEIGHT, CELL_DEPTH)
+
+const MINIMUM_SPACE_TO_WALK: float = 2
 
 var rng: RandomNumberGenerator
 

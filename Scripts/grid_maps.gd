@@ -1,11 +1,13 @@
 extends Node3D
 @onready var main_grid: GridMap = $GridMap
 @onready var highlight_grid: GridMap = $HighlightMap
-var pathfinding: AStar2D = AStar2D.new()
+var pathfinding: CustomAStar = CustomAStar.new()
 var top_cells: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_child(pathfinding)
+	pathfinding.init(main_grid)
 	SignalBus.cell_clicked_by_mouse.connect(_on_main_camera_cell_clicked)
 	var filled_cells: Array[Vector3i] = main_grid.get_used_cells()
 	for cell in filled_cells:
@@ -37,6 +39,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_main_camera_cell_clicked(cell: Vector3i) -> void:
-	print("test", cell)
-	highlight_tiles(Vector2i(cell.x, cell.z), 2)
+	# highlight_tiles(Vector2i(cell.x, cell.z), 2)
+	var point = pathfinding.get_point_from_position(cell)
+	print(point)
+	var neighbors = pathfinding.get_connected_points(point)
+	print(neighbors)
 	pass # Replace with function body.
