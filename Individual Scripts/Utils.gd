@@ -44,3 +44,6 @@ func append_to_dict_array(dict: Dictionary, key, value) -> void:
 	if not dict.has(key):
 		dict[key] = []
 	dict[key].append(value)
+
+func vec3_to_vec2(vec3d: Vector3) -> Vector2:
+	return Vector2(vec3d.x, vec3d.z)

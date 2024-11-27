@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://c56wperj1mwaq"]
+[gd_scene load_steps=6 format=4 uid="uid://c56wperj1mwaq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gjj1y"]
 resource_name = "Material"
@@ -38,6 +38,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_h44uq")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3n8l7"]
+size = Vector3(3, 3, 3)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wcd5"]
 size = Vector3(2, 2, 2)
 
@@ -47,6 +50,12 @@ size = Vector3(2, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
 mesh = SubResource("ArrayMesh_s04k2")
 skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="Cube"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_3n8l7")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube"]
 

@@ -1,7 +1,7 @@
 extends Marker3D
 
-const ROTATION_DEGREES: float = 90.0
-const ROTATION_FRAME_DURATION: float = 1 # Duration in seconds
+const ROTATION_DEGREES: float = 10.0
+const ROTATION_FRAME_DURATION: float = 0.1 # Duration in seconds
 const INITIAL_ROTATION := Vector3(60.0, 45.0, 0)
 
 var rotating_direction: float = 0

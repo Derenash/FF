@@ -6,9 +6,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		var to = from + project_ray_normal(event.position) * 1000
 
 		var space_state = get_world_3d().direct_space_state
-		var params = PhysicsRayQueryParameters3D.new()
-		params.from = from
-		params.to = to
+		var params = PhysicsRayQueryParameters3D.create(from, to)
 		params.collide_with_areas = true
 		params.collide_with_bodies = true
 		var result = space_state.intersect_ray(params)
